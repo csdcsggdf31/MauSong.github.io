@@ -232,9 +232,9 @@ function random_select(jsonObj, num) {
 		myDiv.addEventListener('click', function () {
 			var song = this.childNodes[1].childNodes[0];
 			var artist = this.childNodes[1].childNodes[1];
-			var text = song.textContent + " - " + artist.textContent;
+			var text = "신청" + song.textContent + " - " + artist.textContent;
 			window.navigator.clipboard.writeText(text).then(() => {
-				toast("복사완료");
+				toast("복사완료! 후원 창에 붙여넣으세요");
 			});
 		});
 		
@@ -312,9 +312,9 @@ function populateSection(jsonObj, direction) {
 		myDiv.addEventListener('click', function () {
 			var song = this.childNodes[1].childNodes[0];
 			var artist = this.childNodes[1].childNodes[1];
-			var text = song.textContent + " - " + artist.textContent;
+			var text = "신청" + song.textContent + " - " + artist.textContent;
 			window.navigator.clipboard.writeText(text).then(() => {
-				toast("복사완료");
+				toast("복사완료! 후원 창에 붙여넣으세요");
 			});
 		});
 
