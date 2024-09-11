@@ -28,6 +28,11 @@ request.onload = function() {
     }
     musicbook = JSON.parse(musicbookText[1]).table.rows.map(({c}) => c.map(e => e ? (e.v || "") : ""));
 
+// 이미지 URL 가져오기 (A1 셀에 있다고 가정)
+    var profileImageUrl = musicbook[0][0];  // 첫 번째 행, 첫 번째 열의 데이터
+    updateProfileImage(profileImageUrl);
+
+
     categorize(musicbook);
     
     addOrdered = JSON.parse(JSON.stringify(musicbook));
@@ -42,6 +47,13 @@ request.onload = function() {
     
     random_select(musicbook,6);
     populateSection(musicbook, -1, "전체"); 
+}
+
+function updateProfileImage(url) {
+    var profilePic = document.getElementById('profile-pic');
+    if (profilePic) {
+        profilePic.src = url;
+    }
 }
 
 function categorize(jsonObj) {
