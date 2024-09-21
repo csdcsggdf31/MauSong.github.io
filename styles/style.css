@@ -533,7 +533,7 @@ i#menu-icon {
 
 
 /****************************************       Random music     */
-.random-music-list {
+.random-music-list, .new-music-list {
 	display: flex; 
 	flex-flow: row wrap; 
 	-webkit-box-pack: center; 
@@ -546,7 +546,7 @@ i#menu-icon {
 .radom-list-header {
 	margin: 0 var(--chakra-space-2);
 }
-.random-song {
+.random-song, .new-song {
 	background: #202020; 
 	color: white;
     width: calc( ( var(--ytmusic-content-width) / 6) - 2 * 0.5rem );	margin: var(--chakra-space-2);
