@@ -19,21 +19,7 @@
 	/* 눈내리는 속도 */
 	--falling-slowly:	20s;
 	
-	/* 상단 트게더 로고 */
-	--logo-URL: 		url("https://cdn.discordapp.com/attachments/903643160721383547/903672720426946580/Logo.png");
-	--logo-width:		150px;
-	--logo-height:		50px;
-	--logo-size-mobile:	90px 30px;
-	
-	/* 접속인원 문구 */
-	--pre-comment:		"깅깅이가 조개를 ";
-	--post-comment:		"개나 들고 있네요! 와! 정말 대다내!";
-	--color-com:		#092561;
-	
-	/* 우하단 '맨 위로 보내기' 이미지 */
-	--moveto-top:		url("https://static-cdn.jtvnw.net/emoticons/v2/emotesv2_106a703cb0d04f70ae172dba77edb3e0/default/light/3.0");
-	--moveto-width:		50px;
-	--moveto-height:	50px;
+
 }
 
 html.darkmode:root {
