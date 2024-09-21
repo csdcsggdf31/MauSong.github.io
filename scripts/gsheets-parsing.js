@@ -25,8 +25,10 @@ request.onload = function() {
         //console.log(obj);
         //console.log(table);
         //console.log(rows);
+        populateNewMusic();
     }
     musicbook = JSON.parse(musicbookText[1]).table.rows.map(({c}) => c.map(e => e ? (e.v || "") : ""));
+    
 
 // 이미지 URL 가져오기 (A1 셀에 있다고 가정)
     var profileImageUrl = musicbook[0][0];  // 첫 번째 행, 첫 번째 열의 데이터
@@ -247,7 +249,43 @@ function populateSection(jsonObj, direction, cate_sel) {
     }
 }
 
+function populateNewMusic() {
+    const newMusicList = musicbook.slice(-6); // 마지막 6개 항목 가져오기
 
+    const myNode = document.getElementById("NML");
+    while (myNode.lastElementChild) {
+        myNode.removeChild(myNode.lastElementChild);
+    }
+
+    for (const song of newMusicList) {
+        const myDiv = document.createElement('div');
+        const coverDiv = document.createElement('div');
+        const coverImg = document.createElement('img');
+        const infoDiv = document.createElement('div');
+        const infoSong = document.createElement('formatted-string');
+        const infoSinger = document.createElement('formatted-string');
+
+        myDiv.classList.add("new-song");
+        
+        coverDiv.classList.add("new-cover-div");
+        coverImg.classList.add("new-cover-img");
+        coverImg.src = song[3]; // 앨범 커버 이미지
+
+        infoDiv.classList.add("new-info-div");
+        infoSinger.classList.add("new-artist-name");
+        infoSong.classList.add("new-song-name");
+        infoSinger.textContent = song[0]; // 가수명
+        infoSong.textContent = song[1]; // 곡명
+
+        coverDiv.appendChild(coverImg);
+        infoDiv.appendChild(infoSong);
+        infoDiv.appendChild(infoSinger);
+        myDiv.appendChild(coverDiv);
+        myDiv.appendChild(infoDiv);
+        
+        document.getElementById("NML").appendChild(myDiv);
+    }
+}
 
 
 
