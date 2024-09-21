@@ -73,6 +73,7 @@ google.charts.load("current", { packages: ["corechart"] }).then(() => {
         category_selected = "";
         genre_selected = "";
         sortAdded();
+        populateNewMusic();
 
         // 두 번째 시트 데이터 요청
         let query2 = new google.visualization.Query(requestURL);
@@ -100,7 +101,55 @@ function updateProfileImage(url) {
         profilePic.src = url;
     }
 }
+function populateNewMusic() {
+    const newMusicList = musicbook.slice(-6); // 마지막 6개 항목 가져오기
 
+    const myNode = document.getElementById("NML"); // NML ID를 가진 노드
+    while (myNode.lastElementChild) {
+        myNode.removeChild(myNode.lastElementChild); // 기존 항목 제거
+    }
+
+    for (const song of newMusicList) {
+        var myDiv = document.createElement('div');
+
+        var coverDiv = document.createElement('div');
+        var coverImg = document.createElement('img');
+
+        var infoDiv = document.createElement('div');
+        var infoSong = document.createElement('formatted-string');
+        var infoArtist = document.createElement('formatted-string');
+
+        myDiv.classList.add("random-song"); // 클래스 이름 통일
+        
+        coverDiv.classList.add("random-cover-div");
+        coverImg.classList.add("random-cover-img");
+        coverImg.src = song.cover_link || noCover; // 커버 링크가 없으면 기본 이미지 사용
+
+        infoDiv.classList.add("random-info-div");
+        infoArtist.classList.add("random-artist-name");
+        infoSong.classList.add("random-song-name");
+        infoArtist.textContent = song.artist; // 가수명
+        infoSong.textContent = song.song; // 곡명
+
+        coverDiv.appendChild(coverImg);
+        infoDiv.appendChild(infoSong);
+        infoDiv.appendChild(infoArtist);
+        myDiv.appendChild(coverDiv);
+        myDiv.appendChild(infoDiv);
+
+        myDiv.classList.add("clickable");
+        myDiv.addEventListener('click', function () {
+            var song = this.childNodes[1].childNodes[0];
+            var artist = this.childNodes[1].childNodes[1];
+            var text = "신청 " + song.textContent;
+            window.navigator.clipboard.writeText(text).then(() => {
+                toast("복사완료! 후원 창에 붙여넣으세요");
+            });
+        });
+
+        myNode.appendChild(myDiv); // 새로운 곡 추가
+    }
+}
 function genre_populate(jsonObj) {
     categories = Array.from(new Set(jsonObj.map(item => item.genre)));
 
