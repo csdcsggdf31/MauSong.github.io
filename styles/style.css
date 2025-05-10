@@ -3,7 +3,7 @@
 	--primary-color: #fed136;
 	--white-color: #ffffff;
 	--black-color: #000000;
-	--Text-color:#682F02;
+	--Text-color:#ffffff;
 	--breakpoint-xs: 0;
 	--breakpoint-sm: 576px;
 	--breakpoint-md: 768px;
@@ -356,11 +356,11 @@ button:hover {
 /****************************************       Button Selected     */
 .button-selected {
 	color: black;
-	background: white;
+	background: rgba(146, 36, 36, 0.588);
 }
 .button-selected:hover {
 	color: black;
-	background: white;
+	background: rgba(146, 36, 36, 0.588);
 }
 
 /****************************************       Button Wrapper     */
@@ -590,6 +590,7 @@ i#menu-icon {
 .random-info-div {
 	padding: 0 var(--chakra-space-2) 1rem;
 	width: 100%;
+	color: var(--Text-color);
 }
 .random-song-name {
 	font-family: 'Pretendard-semiBold';
