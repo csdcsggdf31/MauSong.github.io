@@ -3,6 +3,7 @@
 	--primary-color: #fed136;
 	--white-color: #ffffff;
 	--black-color: #000000;
+	--Text-color:#682F02;
 	--breakpoint-xs: 0;
 	--breakpoint-sm: 576px;
 	--breakpoint-md: 768px;
@@ -253,10 +254,10 @@ li
 formatted-string.sidebar-header-text {
 	font-family: 'GmarketSansMedium';
 	font-size: var(--chakra-fontSizes-5xl);
-	color: white;
+	color: var(--Text-color);
 }
 formatted-string.introduction-text {
-	color: white;
+	color: var(--Text-color);
     font-family: 'Pretendard-Light';
     font-size: var(--chakra-fontSizes-2xl);
     line-height: 2.2rem;
@@ -264,11 +265,12 @@ formatted-string.introduction-text {
     letter-spacing: var(--chakra-letterSpacings-wider);
 }
 formatted-string.random-list-title {
-	color: white;
+	color: var(--Text-color);
 }
 formatted-string.main-list-title {
-	color: white;
+	color: var(--Text-color);
 }
+
 formatted-string.category-text {
 	font-family: 'Pretendard-semiBold';
 	font-size: var(--chakra-fontSizes-3xl);
@@ -276,6 +278,7 @@ formatted-string.category-text {
 	white-space: nowrap;
 }
 formatted-string.sort-text {
+	color: var(--Text-color);
 	font-family: 'Pretendard-Regular';
 	font-size: var(--chakra-fontSizes-xl);
 	margin: 0 12px;
@@ -316,10 +319,9 @@ button {
 	justify-content: center;
 	box-sizing: border-box;
 	min-width: 32px;
-	color: #030303;
+	color: var(--Text-color);
 	--yt-endpoint-hover-color: #030303;
 	background: var(--item-background);
-	color: #fff;
 	border-radius: 8px;
 	border: none;
 	height: 36px;
@@ -384,7 +386,16 @@ button:hover {
 	margin: 0 var(--chakra-space-2);
 }
 
+.random-song.clickable {
+	color: var(--random-song-color); /* 텍스트 색상 */
+    background-color: var(--item-background); /* 배경색 */
+    border: 1px solid var(--random-song-color); /* 테두리 색상 */
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
 
+}
 
 .nav-head {
 	display: flex;
@@ -656,6 +667,8 @@ i#menu-icon {
 	position: relative;
 	margin: 0 var(--chakra-space-2);
 	max-width: 40%;
+	color: var(--Text-color);
+
 }
 .search-icon {
 	left: 0px;
@@ -716,6 +729,7 @@ genre.genre-list {
 }
 .main-list-title, .random-list-title {
 	font-size: var(--chakra-fontSizes-5xl);
+	color: var(--Text-color);
 }
 @media screen and (max-width: 1020px) { 
 	.main-list-title, .random-list-title {
@@ -773,6 +787,7 @@ genre.genre-list {
 }
 .info-div {
 	padding: var(--chakra-space-2);
+	color: var(--Text-color);
 	width:  calc(100% - var(--chakra-sizes-36));
 }
 @media screen and (max-width: 1020px) { 
@@ -825,7 +840,7 @@ genre.genre-list {
 		padding-inline-start: var(--chakra-space-4);
 		padding-inline-end: var(--chakra-space-4);
 		height: var(--chakra-sizes-20);
-		background: rgb(0, 0, 0);
+		background: var(--item-background);
 		color: aliceblue;
 		border-bottom-width: 1px;
 		border-bottom-color: var(--chakra-colors-gray-200);
