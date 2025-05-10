@@ -1,5 +1,5 @@
 :root {
-	--main-bg-color: #E4E3E3;
+	--main-bg-color: var(--body-background);
 	--primary-color: #fed136;
 	--white-color: #ffffff;
 	--black-color: #000000;
@@ -170,28 +170,23 @@ button, input, optgroup, select, textarea {
 	border-style: solid;
 	box-sizing: border-box;
 }
-body {
-	margin: 0;
-	background-color: var(--body-background);
-	height: 100vh; 
-	width: 100vw;
-}
-
 
 
 
 
 
 /****************************************       Base      */
-html {
+html, body {
+	height: 100%;
+    width: 100%;
 	font-size: 10px; 
 	font-family: var(--font-sans);
-	background-color: var(--main-bg-color);
+	background-color: var(--body-background);
 	text-size-adjust: 100%;
+	
 	/* --vh: 722px; */
 	-ms-overflow-style: none; /* IE and Edge */
 	scrollbar-width: none; /* Firefox */
-	background-color: var(--body-background);
 }
 html::-webkit-scrollbar {
 	display: none; /* Chrome, Safari, Opera*/
