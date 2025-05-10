@@ -35,36 +35,38 @@ google.charts.load("current", { packages: ["corechart"] }).then(() => {
         let dataTable = response.getDataTable().toJSON(); 
         let jsonData = JSON.parse(dataTable);
         let cols = ["order", "artist", "song", "genre", "category", "cover_link"];
+        
+        // 수정된 코드 시작
         musicbook = jsonData.rows.map((row) => {
-            let newRow;
+            let newRow = {};
             row.c.forEach((obj, index) => {
-                if (obj == null || obj == undefined) return; //빈값이 경우 정지
+                if (obj == null || obj == undefined) return; // 빈 값은 건너뜀
                 obj[cols[index]] = "f" in obj ? obj["f"] : obj["v"];
                 ["f", "v"].forEach((each) => delete obj[each]);
                 newRow = { ...newRow, ...obj };
             });
             return newRow;
-        });
+        }).filter((row) => row && row.song && row.artist); // 유효한 데이터만 필터링
 
-        addOrdered = JSON.parse(JSON.stringify(musicbook));
-
+        // 정렬 시 유효성 검사 추가
         musicbook.sort((a, b) => {
-            a = a.song.toLowerCase();
-            b = b.song.toLowerCase();
-            if (a > b) return 1;
-            if (a < b) return -1;
+            const songA = a.song ? a.song.toLowerCase() : ""; // song이 없으면 빈 문자열로 처리
+            const songB = b.song ? b.song.toLowerCase() : "";
+            if (songA > songB) return 1;
+            if (songA < songB) return -1;
             return 0;
         });
         songOrdered = JSON.parse(JSON.stringify(musicbook));
 
         musicbook.sort((a, b) => {
-            a = a.artist.toLowerCase();
-            b = b.artist.toLowerCase();
-            if (a > b) return 1;
-            if (a < b) return -1;
+            const artistA = a.artist ? a.artist.toLowerCase() : ""; // artist가 없으면 빈 문자열로 처리
+            const artistB = b.artist ? b.artist.toLowerCase() : "";
+            if (artistA > artistB) return 1;
+            if (artistA < artistB) return -1;
             return 0;
         });
         artistOrdered = JSON.parse(JSON.stringify(musicbook));
+        // 수정된 코드 끝
 
         category_populate(musicbook);
         genre_populate(musicbook);
