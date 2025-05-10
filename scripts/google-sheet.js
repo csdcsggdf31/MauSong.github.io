@@ -17,6 +17,9 @@ var category_selected;
 var categories;
 var genre_selected;
 
+let myKey = "1RoejS2-p_b69fbQKAHB4JsBm2enj9tnYBcBgl6lE90M"; // 스프레드시트 KEY
+var requestURL = `https://docs.google.com/spreadsheets/d/${myKey}/gviz/tq?tqx=out:json&sheet=설정`;
+
 google.charts.load("current", { packages: ["corechart"] }).then(() => {
 	let query = new google.visualization.Query(
 		`https://docs.google.com/spreadsheets/d/${myKey}/gviz/tq?tqx=out:json`
